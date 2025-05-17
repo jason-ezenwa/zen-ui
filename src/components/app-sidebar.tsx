@@ -16,16 +16,13 @@ import { NavUser } from "./nav-user";
 import { GalleryVerticalEnd } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
+import { IconCreditCard, IconDashboard, IconWallet } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 
 // This is sample data.
 const data = {
   versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
-  user: {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    image: "https://github.com/shadcn.png",
-    avatar: "https://github.com/shadcn.png",
-  },
   navMain: [
     {
       title: "Main",
@@ -33,15 +30,18 @@ const data = {
       items: [
         {
           title: "Dashboard",
-          url: "/",
+          url: "/dashboard",
+          icon: <IconDashboard />,
         },
         {
           title: "Wallets",
           url: "/wallets",
+          icon: <IconWallet />,
         },
         {
           title: "Virtual Cards",
           url: "/virtual-cards",
+          icon: <IconCreditCard />,
         },
       ],
     },
@@ -50,6 +50,15 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
+
+  const { user } = useAuth();
+
+  const navUser = {
+    name: user?.firstName || "User",
+    email: user?.email || "N/A",
+    image: "https://github.com/shadcn.png",
+    avatar: "https://github.com/shadcn.png",
+  };
 
   const isActive = (url: string) =>
     pathname === url || pathname?.startsWith(url);
@@ -82,7 +91,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild isActive={isActive(item.url)}>
-                      <Link href={item.url}>{item.title}</Link>
+                      <Link href={item.url}>
+                        {item.icon}
+                        {item.title}
+                      </Link>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
@@ -93,7 +105,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
       <SidebarRail />
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={navUser} />
       </SidebarFooter>
     </Sidebar>
   );

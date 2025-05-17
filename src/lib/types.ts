@@ -17,3 +17,12 @@ export interface User {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface Wallet {
+  _id: string;
+  userId: string;
+  currency: string;
+  balance: number;
+  createdAt: string;
+  updatedAt: string;
+}

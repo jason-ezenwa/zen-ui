@@ -18,7 +18,7 @@ export default function MainLayout({ children }: LayoutProps) {
       <AppSidebar variant="inset" />
       <SidebarInset>
         <SiteHeader />
-        {children}
+        <main className="flex-1 px-4 md:px-8 py-4">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );

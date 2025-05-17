@@ -45,7 +45,9 @@ export function LoginForm({
       });
 
       if (response && response.status === 200) {
-        toast.success(response.data.message, { duration: 1500 });
+        toast.success(response.data.message || "Login successful", {
+          duration: 1500,
+        });
 
         Cookies.set("token", response.data.token);
 

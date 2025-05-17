@@ -411,11 +411,11 @@ export function SignupForm({
                     <Button
                       type="button"
                       onClick={goBack}
-                      className="w-full"
+                      className="w-full cursor-pointer"
                       variant="outline">
                       Back
                     </Button>
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" className="w-full cursor-pointer">
                       Continue
                     </Button>
                   </div>
@@ -512,13 +512,13 @@ export function SignupForm({
                     <Button
                       type="button"
                       onClick={goBack}
-                      className="w-full"
+                      className="w-full cursor-pointer"
                       variant="outline">
                       Back
                     </Button>
                     <Button
                       type="submit"
-                      className="w-full"
+                      className="w-full cursor-pointer"
                       disabled={isLoading}>
                       {isLoading ? "Creating Account..." : "Create Account"}
                     </Button>
