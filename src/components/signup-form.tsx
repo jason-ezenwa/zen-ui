@@ -14,8 +14,8 @@ import { useAxios } from "@/hooks/use-axios";
 import { useAuth } from "@/contexts/AuthContext";
 import Cookies from "js-cookie";
 import { AxiosError } from "axios";
-import { Address } from "@/lib/types";
 import { useRouter } from "next/router";
+import { addHours } from "date-fns";
 
 // Form schemas for each step
 const personalInfoSchema = z.object({
@@ -182,7 +182,9 @@ export function SignupForm({
       if (response && response.status === 201) {
         toast.success("Account created successfully!", { duration: 1500 });
 
-        Cookies.set("token", response.data.token);
+        Cookies.set("token", response.data.token, {
+          expires: addHours(new Date(), 3),
+        });
 
         // Update user context and redirect
         setTimeout(() => {

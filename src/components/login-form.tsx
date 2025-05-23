@@ -14,7 +14,7 @@ import { useAxios } from "@/hooks/use-axios";
 import { useAuth } from "@/contexts/AuthContext";
 import Cookies from "js-cookie";
 import { AxiosError } from "axios";
-
+import { addHours } from "date-fns";
 export function LoginForm({
   className,
   ...props
@@ -49,7 +49,9 @@ export function LoginForm({
           duration: 1500,
         });
 
-        Cookies.set("token", response.data.token);
+        Cookies.set("token", response.data.token, {
+          expires: addHours(new Date(), 3),
+        });
 
         setTimeout(() => {
           updateUser().then(() => {
