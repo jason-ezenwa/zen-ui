@@ -82,7 +82,7 @@ export default function WalletsPage() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:max-w-screen-md">
           {loading ? (
             Array(4)
               .fill(0)
@@ -106,7 +106,7 @@ export default function WalletsPage() {
               <Card key={wallet._id} className="overflow-hidden">
                 <CardHeader>
                   <CardDescription>{wallet.currency} Wallet</CardDescription>
-                  <CardTitle className="@[250px]/card:text-3xl text-4xl font-semibold tabular-nums">
+                  <CardTitle className="@[250px]/card:text-3xl text-4xl font-semibold tabular-nums font-[AeonikPro]">
                     {formatCurrency(wallet.balance, wallet.currency)}
                   </CardTitle>
                 </CardHeader>

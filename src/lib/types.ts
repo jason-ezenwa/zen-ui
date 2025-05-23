@@ -26,3 +26,19 @@ export interface Wallet {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface VirtualCard {
+  _id: string;
+  cardId: string;
+  cardReference: string;
+  brand: string;
+  currency: string;
+  number: string;
+  maskedPan: string;
+  expiry: string;
+  cvv: string;
+  status: "ACTIVE" | "DISABLED";
+  balance: number;
+  createdAt: string;
+  updatedAt: string;
+}

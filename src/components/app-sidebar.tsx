@@ -13,7 +13,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
-import { GalleryVerticalEnd, LogOutIcon } from "lucide-react";
+import { ArrowLeftRight, GalleryVerticalEnd, LogOutIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -43,6 +43,11 @@ const data = {
           title: "Virtual Cards",
           url: "/virtual-cards",
           icon: <IconCreditCard />,
+        },
+        {
+          title: "FX",
+          url: "/fx",
+          icon: <ArrowLeftRight className="size-5" />,
         },
       ],
     },
