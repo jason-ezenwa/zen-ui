@@ -5,8 +5,9 @@ import { Wallet } from "@/lib/types";
 import { toast } from "sonner";
 import { CurrencyExchangeQuote } from "@/components/currency-exchange-quote";
 import { CurrencyExchangeExecute } from "@/components/currency-exchange-execute";
-import { AlertCircleIcon, ArrowLeftRightIcon } from "lucide-react";
+import { AlertCircleIcon } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Loading } from "@/components/loading";
 
 interface QuoteData {
   quoteReference: string;
@@ -54,12 +55,15 @@ export default function FXPage() {
     fetchWallets();
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <MainLayout>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-3xl">
         <div className="mb-6">
           <h1 className="text-xl lg:text-2xl font-bold flex items-center">
-            <ArrowLeftRightIcon className="mr-2 h-5 w-5" />
             Currency Exchange (FX)
           </h1>
           <p className="text-muted-foreground mt-1">

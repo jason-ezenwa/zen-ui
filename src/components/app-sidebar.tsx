@@ -45,7 +45,7 @@ const data = {
           icon: <IconCreditCard />,
         },
         {
-          title: "FX",
+          title: "Currency Exchange",
           url: "/fx",
           icon: <ArrowLeftRight className="size-5" />,
         },
