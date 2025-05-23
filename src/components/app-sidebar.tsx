@@ -13,12 +13,13 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { NavUser } from "./nav-user";
-import { GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd, LogOutIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { IconCreditCard, IconDashboard, IconWallet } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
 
 // This is sample data.
 const data = {
@@ -51,7 +52,7 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
 
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
 
   const navUser = {
     name: user?.firstName || "User",
@@ -106,6 +107,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarRail />
       <SidebarFooter>
         <NavUser user={navUser} />
+        <Button onClick={logOut}>
+          Log Out <LogOutIcon className="ml-2 h-4 w-4" />
+        </Button>
       </SidebarFooter>
     </Sidebar>
   );

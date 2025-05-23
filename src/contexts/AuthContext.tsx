@@ -8,6 +8,7 @@ import React, {
 import { useRouter } from "next/router";
 import { User } from "@/lib/types";
 import { useAxios } from "@/hooks/use-axios";
+import Cookies from "js-cookie";
 
 type AuthState = "loading" | "authenticated" | "unauthenticated";
 
@@ -17,6 +18,7 @@ type AuthContextType = {
   loadingAuth: boolean;
   error: any;
   updateUser: () => Promise<void>;
+  logOut: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -50,6 +52,12 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     setLoadingAuth(false);
   };
 
+  const logOut = async () => {
+    Cookies.remove("token");
+
+    window.location.href = "/login";
+  };
+
   // This will call the updateUser on initial load and anytime the route changes
   // This allows us to revalidate each time the user page changes (example from login to dashboard)
   useEffect(() => {
@@ -69,7 +77,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, authState, error, updateUser, loadingAuth }}>
+      value={{ user, authState, error, updateUser, loadingAuth, logOut }}>
       {children}
     </AuthContext.Provider>
   );
