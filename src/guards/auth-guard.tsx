@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Cookie from "js-cookie";
 import { ReactNode } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { Loader2 } from "lucide-react";
+import { Loading } from "@/components/loading";
 
 export default function AuthGuard({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -53,7 +53,7 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
   }, [router, loadingAuth]);
 
   if (authState === "loading" || !isReady) {
-    return <Loader2 className="animate-spin" />;
+    return <Loading />;
   }
 
   return <>{children}</>;
