@@ -55,9 +55,9 @@ export function WalletCreateModal({
 
       if (data) {
         toast.success(`${currency} wallet created successfully`);
-        onComplete && onComplete();
+        onComplete?.();
       }
-    } catch (err) {
+    } catch {
       toast.error("Failed to create wallet. Please try again.");
     }
   };

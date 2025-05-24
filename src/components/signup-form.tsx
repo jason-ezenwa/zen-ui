@@ -50,17 +50,26 @@ const addressInfoSchema = z.object({
   zipCode: z.string().min(4, "Zip code is required"),
 });
 
-// Combined schema for the final submission
-const signupSchema = personalInfoSchema.merge(securityInfoSchema).merge(
-  z.object({
-    address: addressInfoSchema,
-  })
-);
-
 type PersonalInfoInputs = z.infer<typeof personalInfoSchema>;
 type SecurityInfoInputs = z.infer<typeof securityInfoSchema>;
 type AddressInfoInputs = z.infer<typeof addressInfoSchema>;
-type SignupInputs = z.infer<typeof signupSchema>;
+type SignupInputs = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  dateOfBirth: string;
+  bvn: string;
+  password: string;
+  confirmPassword: string;
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    country: string;
+    zipCode: string;
+  };
+};
 
 export function SignupForm({
   className,

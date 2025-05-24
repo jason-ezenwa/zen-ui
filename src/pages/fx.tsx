@@ -38,7 +38,6 @@ export default function FXPage() {
 
   const {
     loading: fxTransactionsLoading,
-    error: fxTransactionsError,
     request: fetchFXTransactionsRequest,
     response: fxTransactionsResponse,
   } = useAxios<FXTransactionsResponse>();
@@ -57,7 +56,7 @@ export default function FXPage() {
       if (data?.wallets) {
         setWallets(data.wallets);
       }
-    } catch (err) {
+    } catch {
       toast.error("Failed to fetch wallets. Please try again.");
     }
   };

@@ -16,7 +16,7 @@ type AuthContextType = {
   user: User | null;
   authState: AuthState;
   loadingAuth: boolean;
-  error: any;
+  error: unknown;
   updateUser: () => Promise<void>;
   logOut: () => Promise<void>;
 };
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         setUser(null);
         setAuthState("unauthenticated");
       }
-    } catch (err) {
+    } catch {
       setUser(null);
       setAuthState("unauthenticated");
     }

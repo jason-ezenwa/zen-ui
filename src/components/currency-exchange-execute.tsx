@@ -48,7 +48,7 @@ export function CurrencyExchangeExecute({
         toast.success("Currency exchanged successfully");
         onExchangeComplete();
       }
-    } catch (err) {
+    } catch {
       toast.error("Failed to complete exchange. The quote may have expired.");
       onReset();
     }
@@ -68,7 +68,7 @@ export function CurrencyExchangeExecute({
         <div className="p-4 bg-muted rounded-md">
           <div className="flex items-center justify-between mb-4">
             <div>
-              <p className="text-sm text-muted-foreground">You'll exchange</p>
+              <p className="text-sm text-muted-foreground">{`You'll exchange`}</p>
               <p className="text-lg font-semibold">
                 {formatCurrency(
                   quoteData.sourceAmount,
@@ -78,7 +78,7 @@ export function CurrencyExchangeExecute({
             </div>
             <ArrowRightIcon className="mx-4 text-muted-foreground" />
             <div>
-              <p className="text-sm text-muted-foreground">You'll receive</p>
+              <p className="text-sm text-muted-foreground">{`You'll receive`}</p>
               <p className="text-lg font-semibold">
                 {formatCurrency(
                   quoteData.targetAmount,

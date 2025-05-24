@@ -54,7 +54,7 @@ export function VirtualCardItem({ card, onRefresh }: VirtualCardItemProps) {
       } else {
         throw Error("Unable to complete request");
       }
-    } catch (err) {
+    } catch {
       toast.error(
         card.status === "DISABLED"
           ? "Failed to unfreeze card. Please try again."

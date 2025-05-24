@@ -46,6 +46,8 @@ export const columns: ColumnDef<Deposit>[] = [
   {
     accessorKey: "reference",
     header: "Reference",
-    cell: ({ row }) => row.original.reference,
+    cell: ({ row }) => (
+      <span className="font-mono text-xs">{row.original.reference}</span>
+    ),
   },
 ];

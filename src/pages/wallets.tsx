@@ -21,6 +21,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { columns } from "@/column-definitions/deposits";
 import { ChevronRight } from "lucide-react";
 import { ChevronLeft } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type DepositResponse = {
   deposits: Deposit[];
@@ -59,7 +60,7 @@ export default function WalletsPage() {
         url: "/wallets",
         method: "GET",
       });
-    } catch (err) {
+    } catch {
       toast.error("Failed to fetch wallets. Please try again.");
     }
   };
@@ -96,7 +97,7 @@ export default function WalletsPage() {
       } else {
         toast.error("Failed to initiate funding. Please try again.");
       }
-    } catch (err) {
+    } catch {
       toast.error("Failed to initiate funding. Please try again.");
     } finally {
       setIsFunding(null);
@@ -110,6 +111,28 @@ export default function WalletsPage() {
 
   const depositsData = depositsResponse?.data;
   const deposits = depositsData?.deposits || [];
+
+  if (error) {
+    return (
+      <Alert variant="destructive">
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>
+          Failed to fetch wallets. Please try again.
+        </AlertDescription>
+      </Alert>
+    );
+  }
+
+  if (depositsError) {
+    return (
+      <Alert variant="destructive">
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>
+          Failed to fetch deposits. Please try again.
+        </AlertDescription>
+      </Alert>
+    );
+  }
 
   return (
     <MainLayout>

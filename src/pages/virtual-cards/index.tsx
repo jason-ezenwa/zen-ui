@@ -29,7 +29,7 @@ export default function VirtualCardsPage() {
       if (data?.virtualCards) {
         setVirtualCards(data.virtualCards);
       }
-    } catch (err) {
+    } catch {
       toast.error("Failed to fetch virtual cards. Please try again.");
     }
   };
@@ -82,8 +82,8 @@ export default function VirtualCardsPage() {
                 Refresh
               </Button>
               <p className="text-sm text-muted-foreground mt-4">
-                Create your first virtual card by clicking the "Create Card"
-                button above.
+                {`Create your first virtual card by clicking the "Create Card"
+                button above.`}
               </p>
             </div>
           )}

@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { useAuth } from "@/contexts/AuthContext";
 import MainLayout from "@/layouts";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,7 +10,6 @@ import {
 
 export default function DashboardPage() {
   const { user } = useAuth();
-  const router = useRouter();
 
   return (
     <MainLayout>

@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Cookie from "js-cookie";
 import { ReactNode } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { Loading } from "@/components/loading";
@@ -50,7 +49,7 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
     }
 
     setIsReady(true);
-  }, [router, loadingAuth]);
+  }, [router, loadingAuth, authState]);
 
   if (authState === "loading" || !isReady) {
     return <Loading />;

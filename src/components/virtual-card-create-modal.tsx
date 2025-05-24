@@ -9,17 +9,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PlusIcon } from "lucide-react";
 import { useAxios } from "@/hooks/use-axios";
 import { toast } from "sonner";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "./ui/input-otp";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "./ui/input-otp";
 
 interface VirtualCardCreateModalProps {
   onComplete?: () => void;
@@ -49,11 +43,12 @@ export function VirtualCardCreateModal({
       if (response.status === 201) {
         toast.success("Virtual card created successfully");
         setCardPin("");
-        onComplete && onComplete();
+        onComplete?.();
         return true;
       }
       toast.error(response.data.error || "Failed to create virtual card");
-    } catch (err) {
+      return false;
+    } catch {
       toast.error("Failed to create virtual card. Please try again.");
       return false;
     }

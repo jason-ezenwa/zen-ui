@@ -120,7 +120,7 @@ export function CurrencyExchangeQuote({
         });
         toast.success("Exchange quote generated successfully");
       }
-    } catch (err) {
+    } catch {
       toast.error("Failed to generate exchange quote. Please try again.");
     }
   };
@@ -200,7 +200,7 @@ export function CurrencyExchangeQuote({
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground">
-                    You'll exchange
+                    {`You'll exchange`}
                   </p>
                   <p className="text-lg font-semibold">
                     {formatCurrency(parseFloat(amount), sourceCurrency)}
@@ -209,7 +209,7 @@ export function CurrencyExchangeQuote({
                 <ArrowRightIcon className="mx-2 text-muted-foreground" />
                 <div>
                   <p className="text-sm text-muted-foreground">
-                    You'll receive
+                    {`You'll receive`}
                   </p>
                   <p className="text-lg font-semibold">
                     {formatCurrency(targetAmount, targetCurrency)}

@@ -18,7 +18,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { IconCreditCard, IconDashboard, IconWallet } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 
 // This is sample data.
