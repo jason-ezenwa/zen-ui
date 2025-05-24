@@ -42,3 +42,47 @@ export interface VirtualCard {
   createdAt: string;
   updatedAt: string;
 }
+
+export enum TransactionStatus {
+  PENDING = "pending",
+  COMPLETED = "completed",
+  FAILED = "failed",
+  APPROVED = "approved",
+  DECLINED = "declined",
+}
+
+export interface Deposit {
+  _id: string;
+  /**
+   * User ID reference
+   */
+  user: string;
+  /**
+   * Wallet ID reference
+   */
+  wallet: string;
+  subTotal: number;
+  fee: number;
+  total: number;
+  currency: string;
+  reference: string;
+  status: TransactionStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface CurrencyExchange {
+  _id: string;
+  /**
+   * User ID reference
+   */
+  user: string;
+  sourceCurrency: string;
+  targetCurrency: string;
+  sourceAmount: number;
+  targetAmount: number;
+  status: string;
+  reference: string;
+  createdAt: string;
+  updatedAt: string;
+}
