@@ -86,3 +86,15 @@ export interface CurrencyExchange {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface CardTransaction {
+  _id: string;
+  card: string;
+  amount: number;
+  currency: string;
+  description: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
+  user: string;
+}

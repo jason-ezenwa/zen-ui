@@ -1,19 +1,38 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import MainLayout from "@/layouts";
 import { useAxios } from "@/hooks/use-axios";
-import { VirtualCard } from "@/lib/types";
+import { CardTransaction, VirtualCard } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { VirtualCardCreateModal } from "@/components/virtual-card-create-modal";
 import { VirtualCardItem } from "@/components/virtual-card-item";
 import { toast } from "sonner";
-import { CreditCardIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, CreditCardIcon } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { DataTable } from "@/components/ui/data-table";
+import { columns } from "@/column-definitions/card-transactions";
+
+type CardTransactionsResponse = {
+  cardTransactions: CardTransaction[];
+  totalPages: number;
+  totalRecords: number;
+  page: number;
+  numberOfRecordsPerPage: number;
+};
 
 export default function VirtualCardsPage() {
   const [virtualCards, setVirtualCards] = useState<VirtualCard[]>([]);
+  const [page, setPage] = useState(1);
   const { loading, error, request } = useAxios<{
     virtualCards: VirtualCard[];
   }>();
+
+  const {
+    loading: transactionsLoading,
+    error: transactionsError,
+    request: fetchTransactionsRequest,
+    response: transactionsResponse,
+  } = useAxios<CardTransactionsResponse>();
 
   useEffect(() => {
     fetchVirtualCards();
@@ -33,6 +52,24 @@ export default function VirtualCardsPage() {
       toast.error("Failed to fetch virtual cards. Please try again.");
     }
   };
+
+  const fetchTransactions = useCallback(async () => {
+    await fetchTransactionsRequest({
+      url: `/virtual-cards/my-transactions?page=${page}`,
+      method: "GET",
+    });
+  }, [page, fetchTransactionsRequest]);
+
+  useEffect(() => {
+    fetchTransactions();
+  }, [page]);
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+  };
+
+  const transactionsData = transactionsResponse?.data;
+  const transactions = transactionsData?.cardTransactions || [];
 
   return (
     <MainLayout>
@@ -91,6 +128,65 @@ export default function VirtualCardsPage() {
             <div className="col-span-full text-center py-10">
               <p className="text-muted-foreground">
                 Failed to fetch virtual cards. Please try again.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <Separator className="my-6" />
+
+        <div className="flex flex-col gap-6">
+          <h2 className="text-xl lg:text-2xl font-bold">Card Transactions</h2>
+          <DataTable
+            columns={columns}
+            data={transactions}
+            loading={transactionsLoading}
+          />
+
+          {transactionsData && (
+            <div className="flex items-center justify-end mt-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-muted-foreground mr-4">
+                  {transactionsData.totalRecords === 0
+                    ? "Showing 0 transactions"
+                    : transactionsData.totalRecords === 1
+                    ? "Showing 1 transaction"
+                    : `Showing ${
+                        (page - 1) * transactionsData.numberOfRecordsPerPage + 1
+                      } to ${Math.min(
+                        page * transactionsData.numberOfRecordsPerPage,
+                        transactionsData.totalRecords
+                      )} of ${transactionsData.totalRecords} transactions`}
+                </span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handlePageChange(page - 1)}
+                  disabled={page <= 1 || transactionsLoading}>
+                  <ChevronLeft className="h-4 w-4 mr-1" />
+                  Previous
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handlePageChange(page + 1)}
+                  disabled={
+                    transactionsData.totalRecords === 0 ||
+                    page * transactionsData.numberOfRecordsPerPage >=
+                      transactionsData.totalRecords ||
+                    transactionsLoading
+                  }>
+                  Next
+                  <ChevronRight className="h-4 w-4 ml-1" />
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {transactionsError && (
+            <div className="text-center py-4">
+              <p className="text-muted-foreground">
+                Failed to fetch card transactions. Please try again.
               </p>
             </div>
           )}

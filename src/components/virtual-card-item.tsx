@@ -20,6 +20,7 @@ import {
   Loader2Icon,
   CreditCardIcon,
 } from "lucide-react";
+import { FundVirtualCardModal } from "./fund-virtual-card-modal";
 
 interface VirtualCardItemProps {
   card: VirtualCard;
@@ -81,11 +82,7 @@ export function VirtualCardItem({ card, onRefresh }: VirtualCardItemProps) {
 
   return (
     <Card
-      className={`overflow-hidden transition-all duration-300 hover:shadow-md max-w-md gap-4 ${
-        isFrozen
-          ? "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800"
-          : "bg-gradient-to-br from-white to-slate-50 dark:from-slate-800 dark:to-slate-900"
-      }`}>
+      className={`overflow-hidden transition-all duration-300 hover:shadow-md max-w-md gap-4 `}>
       <CardHeader className="relative py-3 px-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -169,6 +166,7 @@ export function VirtualCardItem({ card, onRefresh }: VirtualCardItemProps) {
             ? "Unfreeze Card"
             : "Freeze Card"}
         </Button>
+        <FundVirtualCardModal card={card} onRefresh={onRefresh} />
       </CardFooter>
     </Card>
   );

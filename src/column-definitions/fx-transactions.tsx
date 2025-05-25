@@ -1,17 +1,10 @@
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { CurrencyExchange } from "@/lib/types";
-import { formatDate } from "date-fns";
-import { formatCurrency } from "@/lib/utils";
+import { formatCurrency, formatDate } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 
 export const columns: ColumnDef<CurrencyExchange>[] = [
-  {
-    accessorKey: "createdAt",
-    header: "Date",
-    cell: ({ row }) =>
-      formatDate(row.original.createdAt, "dd/MM/yyyy, hh:mm a"),
-  },
   {
     accessorKey: "exchange",
     header: "Exchange",
@@ -45,6 +38,11 @@ export const columns: ColumnDef<CurrencyExchange>[] = [
         </span>
       );
     },
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Date",
+    cell: ({ row }) => formatDate(row.original.createdAt),
   },
   {
     accessorKey: "reference",

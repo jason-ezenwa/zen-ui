@@ -2,8 +2,7 @@ import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { TransactionStatus, Deposit } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
-import { formatDate } from "date-fns";
-import { formatCurrency } from "@/lib/utils";
+import { formatCurrency, formatDate } from "@/lib/utils";
 
 const getStatusBadge = (status: TransactionStatus) => {
   switch (status) {
@@ -22,12 +21,6 @@ const getStatusBadge = (status: TransactionStatus) => {
 
 export const columns: ColumnDef<Deposit>[] = [
   {
-    accessorKey: "createdAt",
-    header: "Date",
-    cell: ({ row }) =>
-      formatDate(row.original.createdAt, "dd/MM/yyyy, hh:mm a"),
-  },
-  {
     accessorKey: "subTotal",
     header: "Amount",
     cell: ({ row }) =>
@@ -42,6 +35,11 @@ export const columns: ColumnDef<Deposit>[] = [
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => getStatusBadge(row.original.status),
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Date",
+    cell: ({ row }) => formatDate(row.original.createdAt),
   },
   {
     accessorKey: "reference",

@@ -1,8 +1,9 @@
 import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { format } from "date-fns";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const formatCurrency = (
@@ -22,4 +23,8 @@ export const formatCurrency = (
     style: "currency",
     currency: currency,
   }).format(amount);
+};
+
+export const formatDate = (date: string | Date) => {
+  return format(date, "dd/MM/yyyy, hh:mm a");
 };
