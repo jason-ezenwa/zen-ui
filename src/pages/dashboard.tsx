@@ -1,5 +1,6 @@
 import { useAuth } from "@/contexts/AuthContext";
 import MainLayout from "@/layouts";
+import { AlertBanner } from "@/components/ui/alert-banner";
 import {
   Card,
   CardContent,
@@ -15,6 +16,7 @@ export default function DashboardPage() {
     <MainLayout>
       <div className="flex flex-1 flex-col">
         <div className="container mx-auto py-6">
+          <AlertBanner message="This is a demo application. No real money transactions are processed." />
           <div className="flex flex-col gap-4 md:gap-8">
             <div className="flex flex-col gap-2">
               <h1 className="text-xl lg:text-2xl font-bold">
