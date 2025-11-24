@@ -176,7 +176,7 @@ export function SignupForm({
         lastName: formData.lastName,
         email: formData.email,
         phoneNumber: formData.phoneNumber,
-        dateOfBirth: formData.dateOfBirth,
+        dateOfBirth: new Date(formData.dateOfBirth).toISOString(),
         bvn: formData.bvn,
         password: formData.password,
         address: data,
