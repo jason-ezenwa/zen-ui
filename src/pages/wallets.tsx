@@ -67,7 +67,7 @@ export default function WalletsPage() {
 
   const fetchDeposits = useCallback(async () => {
     await fetchDepositsRequest({
-      url: `/wallets/my-deposits?page=${page}`,
+      url: `/wallets/deposits?page=${page}`,
       method: "GET",
     });
   }, [page, fetchDepositsRequest]);

@@ -98,7 +98,7 @@ export function CurrencyExchangeQuote({
 
     try {
       const { data } = await request({
-        url: "/fx/generate-quote",
+        url: "/fx/quote",
         method: "POST",
         data: {
           sourceCurrency,

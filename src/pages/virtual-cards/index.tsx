@@ -55,7 +55,7 @@ export default function VirtualCardsPage() {
 
   const fetchTransactions = useCallback(async () => {
     await fetchTransactionsRequest({
-      url: `/virtual-cards/my-transactions?page=${page}`,
+      url: `/virtual-cards/transactions?page=${page}`,
       method: "GET",
     });
   }, [page, fetchTransactionsRequest]);

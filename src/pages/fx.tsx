@@ -63,7 +63,7 @@ export default function FXPage() {
 
   const fetchFXTransactions = useCallback(async () => {
     await fetchFXTransactionsRequest({
-      url: `/fx/my-transactions?page=${page}`,
+      url: `/fx/transactions?page=${page}`,
       method: "GET",
     });
   }, [page, fetchFXTransactionsRequest]);
