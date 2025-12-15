@@ -47,9 +47,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     } catch {
       setUser(null);
       setAuthState("unauthenticated");
+    } finally {
+      setLoadingAuth(false);
     }
-
-    setLoadingAuth(false);
   };
 
   const logOut = async () => {

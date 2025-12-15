@@ -10,7 +10,7 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
 
   const { authState, loadingAuth } = useAuth();
 
-  const [isReady, setIsReady] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   const protectedRoutes = [
     "/dashboard",
@@ -24,34 +24,36 @@ export default function AuthGuard({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const isAuthenticated = authState === "authenticated";
-
     const isProtectedRoute = protectedRoutes.includes(router.pathname);
-
     const isAuthPage = authRoutes.includes(router.pathname);
 
     if (loadingAuth) {
       return;
     }
 
+    // Handle redirects - set redirecting state and don't set isReady
     if (isProtectedRoute && !isAuthenticated) {
+      setIsRedirecting(true);
       router.replace("/login");
       return;
     }
 
     if (isAuthPage && isAuthenticated) {
+      setIsRedirecting(true);
       router.replace("/dashboard");
       return;
     }
 
     if (router.pathname === "/" && isAuthenticated) {
+      setIsRedirecting(true);
       router.replace("/dashboard");
       return;
     }
 
-    setIsReady(true);
+    setIsRedirecting(false);
   }, [router, loadingAuth, authState]);
 
-  if (authState === "loading" || !isReady) {
+  if (authState === "loading" || isRedirecting) {
     return <Loading />;
   }
 
