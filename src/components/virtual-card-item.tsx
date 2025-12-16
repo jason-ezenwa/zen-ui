@@ -137,7 +137,7 @@ export function VirtualCardItem({ card, onRefresh }: VirtualCardItemProps) {
       <CardContent className="px-4">
         <div
           className={cn(
-            "text-3xl font-semibold tabular-nums tracking-tight font-[AeonikPro] text-primary",
+            "text-3xl font-semibold tabular-nums tracking-tight font-[AeonikPro] text-card-foreground",
             isFrozen && "text-slate-500"
           )}>
           {formatCurrency(card.balance, card.currency)}
