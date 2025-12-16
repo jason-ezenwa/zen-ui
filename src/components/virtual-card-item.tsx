@@ -163,8 +163,8 @@ export function VirtualCardItem({ card, onRefresh }: VirtualCardItemProps) {
           {isProcessing
             ? "Processing..."
             : isFrozen
-            ? "Unfreeze Card"
-            : "Freeze Card"}
+            ? "Unfreeze card"
+            : "Freeze card"}
         </Button>
         <FundVirtualCardModal card={card} onRefresh={onRefresh} />
       </CardFooter>

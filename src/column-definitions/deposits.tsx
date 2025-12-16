@@ -8,14 +8,14 @@ const getStatusBadge = (status: TransactionStatus) => {
   switch (status) {
     case TransactionStatus.COMPLETED:
     case TransactionStatus.APPROVED:
-      return <Badge variant="default">Completed</Badge>;
+      return <Badge variant="default">{status}</Badge>;
     case TransactionStatus.PENDING:
-      return <Badge variant="secondary">Pending</Badge>;
+      return <Badge variant="secondary">{status}</Badge>;
     case TransactionStatus.FAILED:
     case TransactionStatus.DECLINED:
-      return <Badge variant="destructive">Declined</Badge>;
+      return <Badge variant="destructive">{status}</Badge>;
     default:
-      return <Badge variant="outline">Pending</Badge>;
+      return <Badge variant="outline">{status}</Badge>;
   }
 };
 

@@ -91,14 +91,14 @@ export function FundVirtualCardModal({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="flex-1 h-8 text-sm">
+        <Button className="flex-1 h-8 text-sm">
           <WalletIcon className="h-3 w-3 mr-2" />
-          Fund Card
+          Fund card
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Fund Virtual Card</DialogTitle>
+          <DialogTitle>Fund virtual card</DialogTitle>
           <DialogDescription>
             Enter the amount you want to add to your card.
           </DialogDescription>
@@ -128,7 +128,7 @@ export function FundVirtualCardModal({
               Cancel
             </Button>
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Processing..." : "Fund Card"}
+              {isLoading ? "Processing..." : "Fund card"}
             </Button>
           </DialogFooter>
         </form>

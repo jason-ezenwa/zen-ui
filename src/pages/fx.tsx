@@ -102,7 +102,7 @@ export default function FXPage() {
       <div className="max-w-3xl">
         <div className="mb-6">
           <h1 className="text-xl lg:text-2xl font-bold flex items-center">
-            Currency Exchange (FX)
+            Currency exchange (FX)
           </h1>
           <p className="text-muted-foreground mt-1">
             Exchange currencies between your wallets
@@ -140,7 +140,7 @@ export default function FXPage() {
       <Separator className="my-6" />
 
       <div className="flex flex-col gap-6">
-        <h2 className="text-xl lg:text-2xl font-bold">FX Transactions</h2>
+        <h2 className="text-xl lg:text-2xl font-bold">FX transactions</h2>
         <DataTable
           columns={columns}
           data={fxTransactions}
@@ -152,7 +152,7 @@ export default function FXPage() {
             <div className="flex items-center space-x-2">
               <span className="text-sm text-muted-foreground mr-4">
                 {fxTransactionsData.totalRecords === 0
-                  ? "Showing 0 transactions"
+                  ? "Showing no transactions"
                   : fxTransactionsData.totalRecords === 1
                   ? "Showing 1 transaction"
                   : `Showing ${

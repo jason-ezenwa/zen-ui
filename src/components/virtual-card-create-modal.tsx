@@ -85,12 +85,12 @@ export function VirtualCardCreateModal({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button>
-          <PlusIcon className="mr-2 h-4 w-4" /> Create Card
+          <PlusIcon className="mr-2 h-4 w-4" /> Create card
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader className="flex flex-col items-center justify-center">
-          <DialogTitle>Create Virtual Card</DialogTitle>
+          <DialogTitle>Create virtual card</DialogTitle>
           <DialogDescription>
             Enter a 4-digit PIN for your new virtual card.
           </DialogDescription>
@@ -126,7 +126,7 @@ export function VirtualCardCreateModal({
               Cancel
             </Button>
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Creating..." : "Create Card"}
+              {isLoading ? "Creating..." : "Create card"}
             </Button>
           </DialogFooter>
         </form>

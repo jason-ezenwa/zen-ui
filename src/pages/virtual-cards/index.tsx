@@ -75,7 +75,7 @@ export default function VirtualCardsPage() {
     <MainLayout>
       <div className="">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-xl lg:text-2xl font-bold">My Virtual Cards</h1>
+          <h1 className="text-xl lg:text-2xl font-bold">My virtual cards</h1>
           <VirtualCardCreateModal onComplete={fetchVirtualCards} />
         </div>
 
@@ -111,7 +111,7 @@ export default function VirtualCardsPage() {
               <div className="mx-auto w-12 h-12 flex items-center justify-center rounded-full bg-muted mb-4">
                 <CreditCardIcon className="h-6 w-6 text-muted-foreground" />
               </div>
-              <p className="text-muted-foreground">No virtual cards found.</p>
+              <p className="text-muted-foreground">No virtual cards found</p>
               <Button
                 onClick={fetchVirtualCards}
                 variant="outline"
@@ -136,7 +136,7 @@ export default function VirtualCardsPage() {
         <Separator className="my-6" />
 
         <div className="flex flex-col gap-6">
-          <h2 className="text-xl lg:text-2xl font-bold">Card Transactions</h2>
+          <h2 className="text-xl lg:text-2xl font-bold">Card transactions</h2>
           <DataTable
             columns={columns}
             data={transactions}

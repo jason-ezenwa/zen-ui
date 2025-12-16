@@ -70,12 +70,12 @@ export function WalletFundModal({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button className="w-full" disabled={isFunding}>
-          {isFunding ? "Processing..." : "Fund Wallet"}
+          {isFunding ? "Processing..." : "Fund wallet"}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Fund Your {wallet.currency} Wallet</DialogTitle>
+          <DialogTitle>Fund your {wallet.currency} wallet</DialogTitle>
           <DialogDescription>
             Enter the amount you want to add to your wallet.
           </DialogDescription>
@@ -105,7 +105,7 @@ export function WalletFundModal({
               Cancel
             </Button>
             <Button type="submit" disabled={isLoading}>
-              {isLoading ? "Processing..." : "Continue to Payment"}
+              {isLoading ? "Processing..." : "Continue to payment"}
             </Button>
           </DialogFooter>
         </form>

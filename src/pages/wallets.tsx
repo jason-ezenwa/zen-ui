@@ -138,7 +138,7 @@ export default function WalletsPage() {
     <MainLayout>
       <div className="">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-xl lg:text-2xl font-bold">My Wallets</h1>
+          <h1 className="text-xl lg:text-2xl font-bold">My wallets</h1>
           <WalletCreateModal
             onComplete={fetchWallets}
             existingCurrencies={existingCurrencies}
@@ -191,7 +191,7 @@ export default function WalletsPage() {
             ))
           ) : (
             <div className="col-span-full text-center py-10">
-              <p className="text-muted-foreground">No wallets found.</p>
+              <p className="text-muted-foreground">No wallets found</p>
               <Button onClick={fetchWallets} variant="outline" className="mt-4">
                 Refresh
               </Button>

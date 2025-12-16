@@ -59,7 +59,7 @@ export function CurrencyExchangeExecute({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Complete Exchange</CardTitle>
+        <CardTitle>Complete exchange</CardTitle>
         <CardDescription>
           Review and complete your currency exchange.
         </CardDescription>
@@ -104,7 +104,7 @@ export function CurrencyExchangeExecute({
           className="w-full sm:w-auto"
           onClick={onReset}
           disabled={loading}>
-          Get New Quote
+          Get new quote
         </Button>
         <Button
           className="w-full sm:w-auto"
@@ -116,7 +116,7 @@ export function CurrencyExchangeExecute({
               Processing...
             </>
           ) : (
-            "Complete Exchange"
+            "Complete exchange"
           )}
         </Button>
       </CardFooter>

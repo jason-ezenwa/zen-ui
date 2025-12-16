@@ -133,7 +133,7 @@ export function CurrencyExchangeQuote({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Generate Exchange Quote</CardTitle>
+        <CardTitle>Generate exchange quote</CardTitle>
         <CardDescription>
           Select currencies and amount to get an exchange rate.
         </CardDescription>
@@ -237,10 +237,10 @@ export function CurrencyExchangeQuote({
           {loading ? (
             <>
               <RefreshCcwIcon className="mr-2 h-4 w-4 animate-spin" />
-              Generating Quote...
+              Generating quote...
             </>
           ) : (
-            "Generate Quote"
+            "Generate quote"
           )}
         </Button>
       </CardFooter>

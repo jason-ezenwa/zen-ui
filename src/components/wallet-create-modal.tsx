@@ -88,12 +88,12 @@ export function WalletCreateModal({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <Button>
-          <PlusIcon className="mr-2 h-4 w-4" /> Create Wallet
+          <PlusIcon className="mr-2 h-4 w-4" /> Create wallet
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Create New Wallet</DialogTitle>
+          <DialogTitle>Create new wallet</DialogTitle>
           <DialogDescription>
             Select the currency for your new wallet.
           </DialogDescription>
@@ -140,7 +140,7 @@ export function WalletCreateModal({
             <Button
               type="submit"
               disabled={isLoading || availableCurrencies.length === 0}>
-              {isLoading ? "Creating..." : "Create Wallet"}
+              {isLoading ? "Creating..." : "Create wallet"}
             </Button>
           </DialogFooter>
         </form>
