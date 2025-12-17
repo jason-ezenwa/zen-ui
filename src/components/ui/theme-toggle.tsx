@@ -1,17 +1,23 @@
 import { Moon, Sun, Monitor } from "lucide-react";
 import { useTheme } from "next-themes";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  // State to ensure the toggle group value is updated when the theme changes
+  const [currentTheme, setCurrentTheme] = useState("system");
+
+  // Update the toggle group value when the theme changes
+  useEffect(() => {
+    if (theme) setCurrentTheme(theme);
+  }, [theme]);
 
   return (
     <ToggleGroup
       type="single"
-      value={theme || "system"}
-      onValueChange={(value) => {
-        if (value) setTheme(value);
-      }}
+      value={currentTheme}
+      onValueChange={setTheme}
       variant="outline"
       size="sm">
       <ToggleGroupItem value="light" aria-label="Light theme">
