@@ -60,7 +60,7 @@ export function LoginForm({
           });
         }, 1500);
       } else {
-        if (response?.status === 400) {
+        if (response?.status !== 500) {
           toast.error(response?.data?.message || response?.data?.error);
         } else {
           toast.error("An error occurred. Please try again later.");
