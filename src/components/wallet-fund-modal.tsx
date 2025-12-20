@@ -96,7 +96,7 @@ export function WalletFundModal({
               {error && <p className="text-sm text-destructive">{error}</p>}
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="flex flex-col lg:flex-row gap-2 lg:gap-0">
             <Button
               type="button"
               variant="outline"

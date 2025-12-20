@@ -101,26 +101,28 @@ export function WalletCreateModal({
         <form onSubmit={handleSubmit}>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
-              <Label htmlFor="currency">Currency</Label>
               {availableCurrencies.length > 0 ? (
-                <Select
-                  value={currency}
-                  onValueChange={(value) => {
-                    setCurrency(value);
-                    setError("");
-                  }}
-                  disabled={isLoading}>
-                  <SelectTrigger id="currency" className="w-full">
-                    <SelectValue placeholder="Select a currency" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {availableCurrencies.map((curr) => (
-                      <SelectItem key={curr} value={curr}>
-                        {curr}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <>
+                  <Label htmlFor="currency">Currency</Label>
+                  <Select
+                    value={currency}
+                    onValueChange={(value) => {
+                      setCurrency(value);
+                      setError("");
+                    }}
+                    disabled={isLoading}>
+                    <SelectTrigger id="currency" className="w-full">
+                      <SelectValue placeholder="Select a currency" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {availableCurrencies.map((curr) => (
+                        <SelectItem key={curr} value={curr}>
+                          {curr}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </>
               ) : (
                 <p className="text-muted-foreground">
                   You already have wallets for all available currencies.
@@ -129,7 +131,7 @@ export function WalletCreateModal({
               {error && <p className="text-sm text-destructive">{error}</p>}
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="flex flex-col lg:flex-row gap-2 lg:gap-0">
             <Button
               type="button"
               variant="outline"

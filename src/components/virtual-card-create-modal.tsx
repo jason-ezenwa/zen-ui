@@ -89,7 +89,7 @@ export function VirtualCardCreateModal({
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader className="flex flex-col items-center justify-center">
+        <DialogHeader>
           <DialogTitle>Create virtual card</DialogTitle>
           <DialogDescription>
             Enter a 4-digit PIN for your new virtual card.
@@ -117,7 +117,7 @@ export function VirtualCardCreateModal({
               </p>
             </div>
           </div>
-          <DialogFooter className="flex flex-col lg:flex-row gap-2">
+          <DialogFooter className="flex flex-col lg:flex-row gap-2 lg:gap-0">
             <Button
               type="button"
               variant="outline"
