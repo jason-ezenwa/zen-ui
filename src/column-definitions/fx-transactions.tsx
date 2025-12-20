@@ -31,9 +31,12 @@ export const columns: ColumnDef<CurrencyExchange>[] = [
     header: "Rate",
     cell: ({ row }) => {
       const rate = row.original.targetAmount / row.original.sourceAmount;
+
+      const displayedRate = rate >= 1 ? rate.toFixed(2) : rate.toFixed(4);
+
       return (
         <span className="text-sm">
-          1 {row.original.sourceCurrency} = {rate.toFixed(4)}{" "}
+          1 {row.original.sourceCurrency} = {displayedRate}{" "}
           {row.original.targetCurrency}
         </span>
       );

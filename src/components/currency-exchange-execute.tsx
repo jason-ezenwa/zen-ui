@@ -90,7 +90,10 @@ export function CurrencyExchangeExecute({
           <div className="pt-2 border-t">
             <p className="text-sm text-muted-foreground">
               Exchange rate: 1 {quoteData.sourceCurrency} ={" "}
-              {quoteData.exchangeRate.toFixed(4)} {quoteData.targetCurrency}
+              {quoteData.exchangeRate >= 1
+                ? quoteData.exchangeRate.toFixed(2)
+                : quoteData.exchangeRate.toFixed(4)}{" "}
+              {quoteData.targetCurrency}
             </p>
             <p className="text-xs text-muted-foreground mt-1">
               Quote expires in 3 minutes from generation time
